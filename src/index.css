@@ -33,3 +33,14 @@ img.logo {
     display: flex;
     justify-content: center;
 }
+
+.email-error {
+    font-size: 12px;
+    color: red;
+}
+
+.pass-error {
+    font-size: 12px;
+    color: red;
+    margin-bottom: 5px;
+}
