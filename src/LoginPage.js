@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-export const LoginPage = () => {
+export const LoginPage = () => { 
   const [myEmail, setMyEmail] = useState("");
   const [myPass, setMyPass] = useState("");
   const [showEmailError, setEmailError] = useState(false);
@@ -36,7 +36,7 @@ export const LoginPage = () => {
       return;
     }
 
-    const userEmail = localStorage.getItem("email");
+    const userEmail = window.localStorage.getItem("email");
     let emailParaLS = "";
 
     if (userEmail === null) {
@@ -45,9 +45,9 @@ export const LoginPage = () => {
       emailParaLS = userEmail + ", " + myEmail;
     }
 
-    localStorage.setItem("email", emailParaLS);
+    window.localStorage.setItem("email", emailParaLS);
 
-    const userPass = localStorage.getItem("password");
+    const userPass = window.localStorage.getItem("password");
     let passParaLS = "";
 
     if (userPass === null) {
@@ -56,7 +56,8 @@ export const LoginPage = () => {
       passParaLS = userPass + ", " + myPass;
     }
 
-    localStorage.setItem("password", passParaLS);
+    window.localStorage.setItem("password", passParaLS);
+    window.dispatchEvent(new Event("storage"));
 
     // Redirect to the user profile page:
 
