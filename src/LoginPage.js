@@ -66,6 +66,8 @@ export const LoginPage = () => {
 
   return (
     <>
+    <h1 className="welcome-login">Welcome Back!</h1>
+    <p className="p-login">Are you ready to take the next step?</p>
       <div>
         <div className="contenedor-login">
           <div className="login">

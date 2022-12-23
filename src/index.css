@@ -26,7 +26,7 @@ img.logo {
     padding-right: 40px;
     padding-top: 60px;
     padding-bottom: 60px;
-    margin-top: 50px;
+    margin-top: 15px;
 }
 
 .contenedor-login {
@@ -44,3 +44,179 @@ img.logo {
     color: red;
     margin-bottom: 5px;
 }
+
+.contenedor {
+    display: flex;
+    flex-direction: column;
+    background: url("./img/background.jpg");
+    width: 1400px;
+    height: 470px;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+h1.titulo {
+    display: flex;
+    justify-content: center;
+    color: white;
+    margin-top: 45px;
+}
+
+.contenedor-notas {
+    display: flex;
+    justify-content: center;
+    margin-top: 12px;
+    margin-bottom: 27px;
+}
+
+.contenedor-input {
+    display: flex;
+    justify-content: center;
+    max-width: 650px;
+    min-width: 540px;
+    margin-top: 25px;
+}
+
+input.textbox {
+    font-family: 'Roboto', sans-serif;
+    color: #333;
+    font-size: 18px;
+    padding: 13px 30px;
+    border-radius: 7px;
+    background-color: rgb(255, 255, 255);
+    border: none;
+    box-shadow: 0px 2px 7px #00000042;
+    margin-left: 12px;
+}
+
+button.btn.btn-primary.search {
+    margin-left: 12px;
+}
+
+.contenedor-our-mission {
+    display: flex;
+    flex-direction: row;
+    padding: 100px;
+}
+
+p.mission-text {
+    color: grey;
+    font-size: 12px;
+    text-decoration: overline;
+    display: flex;
+    margin-left: 20px;
+}
+
+img.imagen {
+    display: flex;
+    width: 380px;
+}
+
+h2.title-jobpage {
+    display: flex;
+    margin: 20px;
+}
+
+p.main-article {
+    display: flex;
+    margin: 20px;
+}
+
+.img-article {
+    display: flex;
+    flex-direction: column;
+}
+
+.card {
+    margin-top: 10px;
+}
+
+.contenedor-user-profile {
+    padding: 30px;
+}
+
+h1.welcome-login {
+    display: flex;
+    justify-content: center;
+    margin-top: 25px;
+}
+
+p.p-login {
+    display: flex;
+    justify-content: center;
+}
+
+h1.jobalert-title {
+    display: flex;
+    justify-content: center;
+    font-size: 70px;
+    font-weight: bold;
+    margin-top: 100px;
+    text-align: center;
+}
+
+h4.jobalert-text {
+    display: flex;
+    justify-content: center;
+    font-size: 20px;
+    margin-top: 35px;
+    text-align: center;
+    margin-bottom: 35px;
+    font-style: italic;
+    word-spacing: 1px;
+    line-height: revert;
+}
+
+.content-post-a-job {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.contenedor-user-status {
+    display: flex;
+    padding: 30px;
+    flex-direction: column;
+}
+
+.contenedor-primer-bloque {
+    display: flex;
+}
+
+.card.user-status {
+    display: flex;
+    flex: 1;
+    margin: 10px;
+}
+
+.card.user-profile {
+    display: flex;
+    flex: 1;
+    margin: 10px;
+}
+
+select.form-select.job-status {
+    margin-top: 10px;
+}
+
+p.status {
+    display: flex;
+    margin-right: 40px;
+    margin-bottom: 0px;
+}
+
+.form-input {
+    padding-left: 200px;
+    padding-right: 200px;
+    margin-top: 100px;
+    display: flex;
+    flex-direction: column;
+}
+
+button.btn.btn-lg.btn-primary.send-form {
+    margin-top: 20px;
+    display: flex;
+    width: 150px;
+    justify-content: center;
+}
+

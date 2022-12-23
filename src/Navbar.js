@@ -1,5 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
+import { StatusContext } from "./context/UserContext";
 
 // const myFunc = (params) => {
 //   const { isActive } = params;
@@ -13,6 +14,8 @@ import { Link, NavLink } from "react-router-dom";
 // };
 
 export const Navbar = (props) => {
+  const { status } = useContext(StatusContext);
+
   console.log(props);
 
   const [showLoginTab, setShowLoginTab] = useState(false);
@@ -28,15 +31,15 @@ export const Navbar = (props) => {
     }
   };
 
-  const onLsChange = () => {
-    // When local storage changes, dump the list to
-    // the console.
-    console.log(window.localStorage.getItem("email"));
-    cambiosDelNavBar();
-  };
-
   useEffect(() => {
     cambiosDelNavBar();
+
+    const onLsChange = () => {
+      // When local storage changes, dump the list to
+      // the console.
+      console.log(window.localStorage.getItem("email"));
+      cambiosDelNavBar();
+    };
 
     window.addEventListener("storage", onLsChange);
 
@@ -51,7 +54,7 @@ export const Navbar = (props) => {
       <nav className="navbar navbar-expand-lg navbar-light bg-light rounded-3">
         <div className="container-fluid">
           <Link className="navbar-brand" to="/">
-            Portal Web
+            Eazy Hire
           </Link>
           <div className="collapse navbar-collapse" id="navbarNav">
             <ul className="navbar-nav">
@@ -59,29 +62,18 @@ export const Navbar = (props) => {
                 className={({ isActive }) =>
                   `nav-link ${isActive ? "active" : ""}`
                 }
-                to="/"
+                to="/jobs"
               >
-                Home
+                Jobs
               </NavLink>
-
-              <NavLink
+              {/* <NavLink
                 className={({ isActive }) =>
                   `nav-link ${isActive ? "active" : ""}`
                 }
                 to="/about"
               >
                 About
-              </NavLink>
-              {showLoginTab === true && (
-                <NavLink
-                  className={({ isActive }) =>
-                    `nav-link ${isActive ? "active" : ""}`
-                  }
-                  to="/login"
-                >
-                  Login
-                </NavLink>
-              )}
+              </NavLink> */}
               {showLoginTab === false && (
                 <NavLink
                   className={({ isActive }) =>
@@ -89,11 +81,50 @@ export const Navbar = (props) => {
                   }
                   to="/userprofile"
                 >
-                  User Profile
+                  User Portal
                 </NavLink>
+              )}
+              {showLoginTab === true && (
+                <li className="nav-item dropdown">
+                  <a
+                    className="nav-link dropdown-toggle"
+                    data-bs-toggle="dropdown"
+                    role="button"
+                    aria-expanded="false"
+                  >
+                    Profile
+                  </a>
+                  <ul className="dropdown-menu">
+                    <li>
+                      <a className="dropdown-item">
+                        <NavLink
+                          className={({ isActive }) =>
+                            `nav-link ${isActive ? "active" : ""}`
+                          }
+                          to="/login"
+                        >
+                          Manage Your Account
+                        </NavLink>
+                      </a>
+                    </li>
+                    <li>
+                      <a className="dropdown-item">
+                        <NavLink
+                          className={({ isActive }) =>
+                            `nav-link ${isActive ? "active" : ""}`
+                          }
+                          to="/jobalert"
+                        >
+                          Manage Job Alerts
+                        </NavLink>
+                      </a>
+                    </li>
+                  </ul>
+                </li>
               )}
             </ul>
           </div>
+          <p className="status">Status: {status}</p>
         </div>
       </nav>
     </div>
