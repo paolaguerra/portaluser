@@ -49,8 +49,6 @@ img.logo {
     display: flex;
     flex-direction: column;
     background: url("./img/background.jpg");
-    width: 1400px;
-    height: 470px;
     background-size: contain;
     background-repeat: no-repeat;
 }

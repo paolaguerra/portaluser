@@ -8,22 +8,27 @@ import { UserProfile } from "./UserProfile";
 import { JobAlert } from "./JobAlert";
 import { Form } from "./Form";
 import { StatusProvider } from "./context/StatusProvider";
+import { FormPreview } from "./FormPreview";
+import { FormProvider } from "./context/FormProvider";
 
 export const MainApp = () => {
   return (
     <UserProvider>
       <StatusProvider>
-        <Navbar />
-        <hr />
+        <FormProvider>
+          <Navbar />
+          <hr />
 
-        <Routes>
-          <Route path="/" element={<SearchJobPage />} />
-          <Route path="/login" element={<LoginPage />} />
-          <Route path="/jobalert" element={<JobAlert />} />
-          <Route path="/jobs" element={<Jobs />} />
-          <Route path="/userprofile" element={<UserProfile />} />
-          <Route path="/form" element={<Form />} />
-        </Routes>
+          <Routes>
+            <Route path="/" element={<SearchJobPage />} />
+            <Route path="/login" element={<LoginPage />} />
+            <Route path="/jobalert" element={<JobAlert />} />
+            <Route path="/jobs" element={<Jobs />} />
+            <Route path="/userprofile" element={<UserProfile />} />
+            <Route path="/form" element={<Form />} />
+            <Route path="/form-preview" element={<FormPreview />} />
+          </Routes>
+        </FormProvider>
       </StatusProvider>
     </UserProvider>
   );
