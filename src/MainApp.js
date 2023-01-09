@@ -10,6 +10,7 @@ import { Form } from "./Form";
 import { StatusProvider } from "./context/StatusProvider";
 import { FormPreview } from "./FormPreview";
 import { FormProvider } from "./context/FormProvider";
+import { SuccessPage } from "./SuccessPage";
 
 export const MainApp = () => {
   return (
@@ -27,6 +28,7 @@ export const MainApp = () => {
             <Route path="/userprofile" element={<UserProfile />} />
             <Route path="/form" element={<Form />} />
             <Route path="/form-preview" element={<FormPreview />} />
+            <Route path="/successpage" element={<SuccessPage />} />
           </Routes>
         </FormProvider>
       </StatusProvider>

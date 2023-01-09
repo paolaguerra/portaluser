@@ -131,6 +131,9 @@ p.main-article {
 
 .contenedor-user-profile {
     padding: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 h1.welcome-login {
@@ -206,7 +209,7 @@ p.status {
 .form-input {
     padding-left: 200px;
     padding-right: 200px;
-    margin-top: 100px;
+    margin-top: 50px;
     display: flex;
     flex-direction: column;
 }
@@ -215,6 +218,46 @@ button.btn.btn-lg.btn-primary.send-form {
     margin-top: 20px;
     display: flex;
     width: 150px;
+    justify-content: center;
+}
+
+p{          
+    display: inline;
+}
+
+.contenedor-success {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+button.btn.btn-lg.btn-primary.success-buttom {
+    display: flex;
+}
+
+img.imagen-success {
+    display: flex;
+    width: 130px;
+    margin-top: 120px;
+    margin-bottom: 20px;
+}
+
+.contenedor-texto-success {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 720px;
+}
+
+h1.form-tittle {
+    font-style: italic;
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+}
+
+p.form-text {
+    display: flex;
     justify-content: center;
 }
 

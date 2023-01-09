@@ -13,10 +13,9 @@ import { StatusContext } from "./context/UserContext";
 //   return classCSS;
 // };
 
-export const Navbar = (props) => {
+export const Navbar = () => {
   const { status } = useContext(StatusContext);
 
-  console.log(props);
 
   const [showLoginTab, setShowLoginTab] = useState(false);
 
@@ -86,17 +85,17 @@ export const Navbar = (props) => {
               )}
               {showLoginTab === true && (
                 <li className="nav-item dropdown">
-                  <a
+                  <div
                     className="nav-link dropdown-toggle"
                     data-bs-toggle="dropdown"
                     role="button"
                     aria-expanded="false"
                   >
                     Profile
-                  </a>
+                  </div>
                   <ul className="dropdown-menu">
                     <li>
-                      <a className="dropdown-item">
+                      <div className="dropdown-item">
                         <NavLink
                           className={({ isActive }) =>
                             `nav-link ${isActive ? "active" : ""}`
@@ -105,10 +104,10 @@ export const Navbar = (props) => {
                         >
                           Manage Your Account
                         </NavLink>
-                      </a>
+                      </div>
                     </li>
                     <li>
-                      <a className="dropdown-item">
+                      <div className="dropdown-item">
                         <NavLink
                           className={({ isActive }) =>
                             `nav-link ${isActive ? "active" : ""}`
@@ -117,7 +116,7 @@ export const Navbar = (props) => {
                         >
                           Manage Job Alerts
                         </NavLink>
-                      </a>
+                      </div>
                     </li>
                   </ul>
                 </li>
