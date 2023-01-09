@@ -1,20 +1,40 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { JobDescription } from "./JobDescription";
 import { JobInvite } from "./JobInvite";
 
 export const Jobs = () => {
-  const jobAlert = window.localStorage.getItem("jobs");
+  const [myJobList, setMyJobList] = useState([]);
 
-  if (jobAlert === null) {
-    return <JobInvite />;
-  }
+  useEffect(() => {
+    const jobAlert = window.localStorage.getItem("jobs");
+    if (jobAlert !== null) {
+      // Solo si hay algo en LS seteamos la variable del state:
+      const jobAlertArray = JSON.parse(jobAlert);
+      setMyJobList(jobAlertArray);
+    }
+  }, []);
 
-  const jobAlertArray = JSON.parse(jobAlert);
+  const handleDelete = (position) => {
+    const newArray = myJobList.filter((jobItem) => {
+      return jobItem.position !== position;
+    });
+    setMyJobList(newArray);
+    
+    let newArrayToString = JSON.stringify(newArray);
+    window.localStorage.setItem('jobs', newArrayToString);
+  };
 
   return (
     <div>
-      {jobAlertArray.map((job) => {
-        return <JobDescription key={job.position} job={job} />;
+      {myJobList.length === 0 && <JobInvite />}
+      {myJobList.map((job) => {
+        return (
+          <JobDescription
+            key={job.position}
+            onDelete={handleDelete}
+            job={job}
+          />
+        );
       })}
     </div>
   );

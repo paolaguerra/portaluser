@@ -1,9 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 
 export const JobDescription = (props) => {
-
-  const [jobs, setJobs] = useState("");
 
   const { job } = props;
 
@@ -18,8 +16,7 @@ export const JobDescription = (props) => {
   } = job;
 
   const handleDelete = () => {
-    setJobs(window.localStorage.getItem("jobs"));
-    console.log(jobs);
+    props.onDelete(position);
   };
 
   return (
@@ -45,10 +42,10 @@ export const JobDescription = (props) => {
           <button type="button" className="btn btn-primary" id="liveAlertBtn">
             Apply Now
           </button>
-          <button type="button" className="btn btn-danger">Delete</button>
+          <button onClick={handleDelete} type="button" className="btn btn-danger">Delete</button>
         </div>
         <br />
-        <div onClick={handleDelete} className="card-footer text-muted">2 days ago</div>
+        <div className="card-footer text-muted">2 days ago</div>
       </div>
     </div>
   );
@@ -64,4 +61,5 @@ JobDescription.propTypes = {
     city: PropTypes.string,
     offerDescription: PropTypes.string
   }),
+onDelete: PropTypes.func.isRequired,
 };
