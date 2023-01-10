@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { FormContext } from "./context/UserContext";
 import { useNavigate } from "react-router-dom";
+import moment from 'moment';
 
 export const FormPreview = () => {
   const navigate = useNavigate();
@@ -24,6 +25,9 @@ export const FormPreview = () => {
     // 1. Traer los jobs existentes:
     let existingJobsString = window.localStorage.getItem('jobs');
     let existingJobsArray = [];
+
+    // LE estoy agregando la fecha de creacion
+    pendingJobLS.createDate = moment().format('YYYY-MM-DD h:mm:ss a');
 
     if (existingJobsString === null) {
       // 2. Creamos el array porque no existe, y le agregamos el primer elemento:

@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import moment from 'moment';
 
 export const JobDescription = (props) => {
 
@@ -13,6 +14,7 @@ export const JobDescription = (props) => {
     state,
     city,
     offerDescription,
+    createDate,
   } = job;
 
   const handleDelete = () => {
@@ -45,7 +47,7 @@ export const JobDescription = (props) => {
           <button onClick={handleDelete} type="button" className="btn btn-danger">Delete</button>
         </div>
         <br />
-        <div className="card-footer text-muted">2 days ago</div>
+        <div className="card-footer text-muted">{moment(createDate).fromNow()}</div>
       </div>
     </div>
   );

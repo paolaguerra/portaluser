@@ -7,6 +7,9 @@ export const SuccessPage = () => {
   const redirectJobPage = () => {
     navigate("/jobs");
   };
+  const redirectToForm = () => {
+    navigate("/form");
+  };
   return (
     <div className="contenedor-success">
       <img className="imagen-success" alt="success" src={success}></img>
@@ -21,12 +24,21 @@ export const SuccessPage = () => {
           letters.
         </p>
       </div>
-      <button
-        onClick={redirectJobPage}
-        className="btn btn-lg btn btn-success success-buttom"
-      >
-        Go to Jobs Page
-      </button>
+      <div className="contenedor-botones">
+        <button
+          onClick={redirectJobPage}
+          className="btn btn-lg btn btn-success success-buttom go-to-job-page"
+        >
+          Go to Jobs Page
+        </button>
+        <button
+          onClick={redirectToForm}
+          type="button"
+          className="btn btn-lg btn-secondary post-another-job"
+        >
+          Post Another Job
+        </button>
+      </div>
     </div>
   );
 };
