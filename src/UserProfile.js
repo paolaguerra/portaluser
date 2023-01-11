@@ -1,13 +1,31 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { UserContext } from "./context/UserContext";
 
 export const UserProfile = () => {
   const [myStatus, setMyStatus] = useState("");
+  const [clicks, setMyClicks] = useState(0)
 
   const { email } = useContext(UserContext);
 
   const navigate = useNavigate();
+
+  const onLsClicks = () => {
+    // When local storage changes, dump the list to
+    // the console.
+    setMyClicks(window.localStorage.getItem("clicks"));
+  };
+
+  useEffect(() => {
+    onLsClicks();
+
+    window.addEventListener("storage", onLsClicks);
+
+    const cleanUp = () => {
+      window.removeEventListener("storage", onLsClicks);
+    };
+    return cleanUp;
+  }, []);
 
   const logOut = () => {
     localStorage.removeItem("password");
@@ -48,15 +66,31 @@ export const UserProfile = () => {
               value={myStatus}
             >
               <option>Status..</option>
-              <option value="Actively interviewing 🚀">Actively interviewing 🚀</option>
+              <option value="Actively interviewing 🚀">
+                Actively interviewing 🚀
+              </option>
               <option value="Loking for offers 🐑">Loking for offers 🐑</option>
               <option value="In a current job ✨">In a current job ✨</option>
-              <option value="Loking for interviews 😢">Loking for interviews 😢</option>
-              <option value="In a current job looking for a new offer 🙏">In a current job looking for a new offer 🙏 </option>
+              <option value="Loking for interviews 😢">
+                Loking for interviews 😢
+              </option>
+              <option value="In a current job looking for a new offer 🙏">
+                In a current job looking for a new offer 🙏{" "}
+              </option>
               <option value="Unemployed 💔">Unemployed 💔</option>
             </select>
           </div>
         </div>
+
+        <div className="card my-applies">
+          <div className="contenedor-my-applies">
+            <p>
+              <b>Applied</b>
+            </p>
+            <h1>{clicks}</h1>
+          </div>
+        </div>
+
       </div>
     </>
   );

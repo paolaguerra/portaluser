@@ -261,3 +261,29 @@ p.form-text {
     justify-content: center;
 }
 
+.apply-to-a-new-job {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 100px;
+}
+
+.job-invite {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 80px;
+}
+
+.card.my-applies {
+    display: flex;
+    margin: 10px;
+}
+
+.contenedor-my-applies {
+    display: flex;
+    padding: 30px;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 10px;
+}

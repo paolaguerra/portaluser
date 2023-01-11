@@ -27,7 +27,7 @@ export const FormPreview = () => {
     let existingJobsArray = [];
 
     // LE estoy agregando la fecha de creacion
-    pendingJobLS.createDate = moment().format('YYYY-MM-DD h:mm:ss a');
+    pendingJobLS.createDate = moment().toISOString();
 
     if (existingJobsString === null) {
       // 2. Creamos el array porque no existe, y le agregamos el primer elemento:

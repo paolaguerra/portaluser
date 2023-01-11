@@ -1,9 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
-import moment from 'moment';
+import moment from "moment";
 
 export const JobDescription = (props) => {
-
   const { job } = props;
 
   const {
@@ -21,6 +20,11 @@ export const JobDescription = (props) => {
     props.onDelete(position);
   };
 
+  const handleApply = () => {
+    props.onApply();
+  };
+
+ 
   return (
     <div>
       <div className="card text-left">
@@ -41,13 +45,26 @@ export const JobDescription = (props) => {
           <br />
           <div id="liveAlertPlaceholder"></div>
           <br />
-          <button type="button" className="btn btn-primary" id="liveAlertBtn">
+          <button
+            onClick={handleApply}
+            type="button"
+            className="btn btn-primary"
+            id="liveAlertBtn"
+          >
             Apply Now
           </button>
-          <button onClick={handleDelete} type="button" className="btn btn-danger">Delete</button>
+          <button
+            onClick={handleDelete}
+            type="button"
+            className="btn btn-danger"
+          >
+            Delete
+          </button>
         </div>
         <br />
-        <div className="card-footer text-muted">{moment(createDate).fromNow()}</div>
+        <div className="card-footer text-muted">
+          {moment(createDate).fromNow()}
+        </div>
       </div>
     </div>
   );
@@ -61,7 +78,8 @@ JobDescription.propTypes = {
     hourPrice: PropTypes.string,
     state: PropTypes.string,
     city: PropTypes.string,
-    offerDescription: PropTypes.string
+    offerDescription: PropTypes.string,
   }),
-onDelete: PropTypes.func.isRequired,
+  onDelete: PropTypes.func.isRequired,
+  onApply: PropTypes.func.isRequired,
 };
