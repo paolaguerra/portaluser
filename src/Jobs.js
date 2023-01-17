@@ -7,17 +7,22 @@ export const Jobs = () => {
   // States del componente:
   const [myJobList, setMyJobList] = useState([]);
   const [clicks, setMyClicks] = useState(0);
+  // State el Input:
+  const [myJob, setMyJob] = useState("");
+  const [myLocation, setMyLocation] = useState("");
+  const [myFilteredJobs, setMyFilteredJobs] = useState([]);
 
   const navigate = useNavigate();
 
+  // Se ejecuta 1 vez cuando se carga el componente:
   useEffect(() => {
-    console.log("Cargando el componente Jobs");
     const jobAlert = window.localStorage.getItem("jobs");
     const clicksLS = window.localStorage.getItem("clicks");
 
     if (jobAlert !== null) {
       const jobAlertArray = JSON.parse(jobAlert);
       setMyJobList(jobAlertArray);
+      setMyFilteredJobs(jobAlertArray);
     }
     if (clicksLS !== null) {
       const clickNumber = parseInt(clicksLS);
@@ -42,11 +47,68 @@ export const Jobs = () => {
     window.localStorage.setItem("clicks", clicksCounter);
     navigate("/successfulapplication");
   };
+  /// Input ////
+
+  const cambiosDelInputJobs = (event) => {
+    setMyJob(event.target.value);
+  };
+
+  const cambiosDelInputLocation = (event) => {
+    setMyLocation(event.target.value);
+  };
+
+  
+  const handleSearch = () => {
+    // Si no hay nada en el input, entonces copio
+    // todos los valores originales en mi filtered array:
+    if (myJob === "") {
+      setMyFilteredJobs(myJobList);
+    }
+    else {
+      const filteredJobs = myJobList.filter((jobItem) => {
+        if (jobItem.position === myJob) {
+          return true;
+        } else {
+  
+          return false;
+        }
+      });
+      setMyFilteredJobs(filteredJobs);
+    }
+  };
 
   return (
+    <>    
+    <div className="contenedor-notas">
+    <div className="contenedor-input">
+      <input
+        className="textbox"
+        placeholder="Job Title or Keywords"
+        type="text"
+        value={myJob}
+        onChange={cambiosDelInputJobs}
+        autoFocus
+      ></input>
+      <input
+        className="textbox"
+        placeholder="Location"
+        type="text"
+        value={myLocation}
+        onChange={cambiosDelInputLocation}
+        autoFocus
+      ></input>
+      <button
+        onClick={handleSearch}
+        type="buttom"
+        className="btn btn-primary search"
+      >
+        Find Jobs
+      </button>
+    </div>
+  </div>
     <div>
-      {myJobList.length === 0 && <JobInvite />}
-      {myJobList.map((job) => {
+      {myFilteredJobs.length === 0 && <JobInvite />}
+      {myFilteredJobs.map((job) => {
         return (
           <JobDescription
             key={job.position}
@@ -57,5 +119,6 @@ export const Jobs = () => {
         );
       })}
     </div>
+    </>
   );
 };

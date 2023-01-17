@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { UserContext } from "./context/UserContext";
+import TagsInput from "./TagsInput";
 
 export const UserProfile = () => {
   const [myStatus, setMyStatus] = useState("");
@@ -90,6 +91,8 @@ export const UserProfile = () => {
             <h1>{clicks}</h1>
           </div>
         </div>
+
+      <TagsInput></TagsInput>
 
       </div>
     </>
