@@ -1,15 +1,17 @@
 import React, { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { UserContext } from "./context/UserContext";
-import TagsInput from "./TagsInput";
+import { TagsInput } from "./TagsInput";
 
 export const UserProfile = () => {
   const [myStatus, setMyStatus] = useState("");
-  const [clicks, setMyClicks] = useState(0)
+  const [clicks, setMyClicks] = useState(0);
 
   const { email } = useContext(UserContext);
 
   const navigate = useNavigate();
+
+  const selectedTags = (tags) => console.log(tags);
 
   const onLsClicks = () => {
     // When local storage changes, dump the list to
@@ -91,9 +93,16 @@ export const UserProfile = () => {
             <h1>{clicks}</h1>
           </div>
         </div>
-
-      <TagsInput></TagsInput>
-
+      </div>
+      <div className="contenedor-2-line">
+        <div className="card">
+          <div className="card-body-tags">
+            <h5 className="card-title-tags">Job Preferences</h5>
+            <div className="tags">
+              <TagsInput selectedTags={selectedTags} />
+            </div>
+          </div>
+        </div>
       </div>
     </>
   );
