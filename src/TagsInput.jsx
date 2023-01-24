@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, {useState } from "react";
 
 export const TagsInput = (props) => {
+    
   const [tags, setTags] = useState([]);
 
   const addTags = (event) => {

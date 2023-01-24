@@ -57,7 +57,6 @@ export const Jobs = () => {
     setMyLocation(event.target.value);
   };
 
-  
   const handleSearch = () => {
     // Si no hay nada en el input, entonces copio
     // todos los valores originales en mi filtered array:

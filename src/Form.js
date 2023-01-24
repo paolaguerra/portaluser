@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 export const Form = () => {
+  
   const [companyName, setCompanyName] = useState("");
   const [position, setPosition] = useState("");
   const [companyURL, setCompanyURL] = useState("");

@@ -11,7 +11,11 @@ export const UserProfile = () => {
 
   const navigate = useNavigate();
 
-  const selectedTags = (tags) => console.log(tags);
+  const selectedTags = (tags) => {
+    console.log(tags);
+    window.localStorage.setItem("tags", tags);
+    window.dispatchEvent(new Event("storage"));
+  };
 
   const onLsClicks = () => {
     // When local storage changes, dump the list to
